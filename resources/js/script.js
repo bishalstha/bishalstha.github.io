@@ -1,7 +1,7 @@
 const projects = [
   {
     id: 1,
-    title: 'EnthuZiastic',
+    title: 'Enthuziastic',
     description: 'Education technology where you can hire or teach anything you can wish for.',
     techStack: [
       'Flutter',
@@ -513,65 +513,66 @@ $(function () {
     }, 400);
   });
 
+  // Commented out for the lack of own server, might have to enable later
   // Form submission
-  $('#contact-form-id').on('submit', async function (ev) {
-    ev.preventDefault();
-    const submitButton = $('#contact-form-id input[type="submit"]');
-    const nameComp = $('#contact-name');
-    const emailComp = $('#contact-email');
-    const messageComp = $('#contact-message');
-    const name = nameComp.val();
-    const email = emailComp.val();
-    const message = messageComp.val();
+  // $('#contact-form-id').on('submit', async function (ev) {
+  //   ev.preventDefault();
+  //   const submitButton = $('#contact-form-id input[type="submit"]');
+  //   const nameComp = $('#contact-name');
+  //   const emailComp = $('#contact-email');
+  //   const messageComp = $('#contact-message');
+  //   const name = nameComp.val();
+  //   const email = emailComp.val();
+  //   const message = messageComp.val();
 
-    const sendHTML = `
-    <div style="max-width: 600px;
-        padding: 20px;
-        margin: auto;
-        background-color: rgb(214, 214, 214);
-        font-family: Arial, Helvetica, sans-serif;
-        border-radius: 5px;">
-        <div style="font-size: 20px;
-          font-weight: bold;">
-          Message from personal page
-        </div>
-        <div>
-          <p>Name: ${name}</p>
-          <p>Email: ${email}</p>
-          <p>Message: ${message}</p>
-        </div>
-    `;
-    const sendData = {
-      subject: 'Message from personal website!',
-      html: sendHTML,
-      plainText: `Name: ${name},\nEmail: ${email},\n Message: ${message}`,
-    };
+  //   const sendHTML = `
+  //   <div style="max-width: 600px;
+  //       padding: 20px;
+  //       margin: auto;
+  //       background-color: rgb(214, 214, 214);
+  //       font-family: Arial, Helvetica, sans-serif;
+  //       border-radius: 5px;">
+  //       <div style="font-size: 20px;
+  //         font-weight: bold;">
+  //         Message from personal page
+  //       </div>
+  //       <div>
+  //         <p>Name: ${name}</p>
+  //         <p>Email: ${email}</p>
+  //         <p>Message: ${message}</p>
+  //       </div>
+  //   `;
+  //   const sendData = {
+  //     subject: 'Message from personal website!',
+  //     html: sendHTML,
+  //     plainText: `Name: ${name},\nEmail: ${email},\n Message: ${message}`,
+  //   };
 
-    submitButton.attr('disabled', 'true');
-    try {
-      const response = await fetch('https://hirebdev.com/mail/send_message', {
-        method: 'POST',
-        cache: 'no-cache',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(sendData)
-      });
-      const data = await response.json();
-      if (data && !data.error) {
-        showToast('Success!');
-      } else {
-        showToast('Failed!');
-      }
-    } catch (err) {
-      showToast('Failed!');
-      console.log(err);
-    }
-    submitButton.removeAttr('disabled');
-    nameComp.val('');
-    emailComp.val('');
-    messageComp.val('');
-  });
+  //   submitButton.attr('disabled', 'true');
+  //   try {
+  //     const response = await fetch('https://hirebdev.com/mail/send_message', {
+  //       method: 'POST',
+  //       cache: 'no-cache',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify(sendData)
+  //     });
+  //     const data = await response.json();
+  //     if (data && !data.error) {
+  //       showToast('Success!');
+  //     } else {
+  //       showToast('Failed!');
+  //     }
+  //   } catch (err) {
+  //     showToast('Failed!');
+  //     console.log(err);
+  //   }
+  //   submitButton.removeAttr('disabled');
+  //   nameComp.val('');
+  //   emailComp.val('');
+  //   messageComp.val('');
+  // });
 
   // Mix it up
   mixitup('.projects');
